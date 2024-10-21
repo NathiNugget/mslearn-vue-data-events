@@ -19,7 +19,14 @@ const app = Vue.createApp({
                 cabinIndex: 0,
                 notes: '',
                 completed: false
-            }
+            },
+            varstatus: "Hej",
+            isChecked: false,
+            selectedIndex: 0, 
+            arrayOfStrings: [
+                "First", "Second", "Third", "Final"
+            ],
+            selectedValue: "Coach",
         }
     },
 

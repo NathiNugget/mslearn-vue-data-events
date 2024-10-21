@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <title>Relecloud Galaxy Tours</title>
     <link rel="stylesheet" href="./assets/styles.css" />
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
 <body>
@@ -18,11 +18,50 @@
         <hr />
 
         <!-- TODO: Add booking form -->
-
+        <p>
+            Text-input
+        </p>
+        <textarea v-model="varstatus"></textarea>
         <!-- TODO: Add success display -->
+        <input type="checkbox" v-model="isChecked" true-value="yes" false-value="no"> Benefits currently applied: {{isChecked}}
+        <br>
 
-
+        <select v-model="selectedIndex">
+            <option v-for="(stringItem, index) in arrayOfStrings" :value="index"> 
+            {{index}}
+            </option>
+         </select>
+         {{ selectedIndex }}
         <img v-bind:src="product.image.src" v-bind:alt="product.image.description" :style="product.image.style" />
+        <br>
+       
+        <select v-model="selectedValue">
+            <option disabled value="">Please select one</option>{{selectedValue = product.cabins[2].name}}
+            <option v-for="item in product.cabins" :value="item.name">
+            {{ item.name }}
+            </option>
+         </select>  
+
+         <form v-show="!booking.completed">
+            <h2>Book now!</h2>
+            <div class="row">
+                <label for="product-cabin">Select class:</label>
+                <select id="product-cabin" v-model="booking.cabinIndex">
+                    <option v-for="(cabin, index) in product.cabins" :value="index">
+                        {{ cabin.name }} DKK {{ cabin.price.toLocaleString('da-DK') }}
+                    </option>
+                </select>
+            </div>
+            <div class="row">
+                <label for="notes">Notes:</label>
+                <textarea v-model="booking.notes" rows="3"></textarea>
+            </div>
+            <div class="row">
+                <!--TODO: Add button later -->
+        
+        
+            </div>
+        </form>
     </div>
 
     <script src="./index.js"></script>
