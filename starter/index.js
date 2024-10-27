@@ -28,13 +28,29 @@ const app = Vue.createApp({
             ],
             selectedValue: "Coach",
         }
+        
     },
 
-    // TODO: Add completed values
+    computed: {
+        bookingCabinDisplay() {
+            const cabin = this.product.cabins[this.booking.cabinIndex];
+            return `${cabin.name}: $ ${cabin.price.toLocaleString('en-US')}`
+        }
+    },
 
+    methods: {
+        displayPrice(){
+            console.log(this.product.cabins[this.booking.cabinIndex].price); 
+        },
 
+        submitBooking(){
+            this.booking.completed = true; 
+        },
+    }, 
 
-    // TODO: Add methods
+    
+
+    
 
 
 
